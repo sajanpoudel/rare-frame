@@ -29,7 +29,6 @@ const queryClient = new QueryClient({
 const { connectors } = getDefaultWallets({
   appName: 'Rare Evo 2025 Tickets',
   projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || 'a4680c32df51906242872506cafd6e3c',
-  chains,
 });
 
 // Create wagmi config with http transport

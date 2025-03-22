@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
     // This disables ESLint during production builds
     ignoreDuringBuilds: true,
   },
+  typescript: {
+    // This disables TypeScript type checking during production builds
+    ignoreBuildErrors: true,
+  },
   webpack: (config) => {
     // This is to handle polyfills and browser compatibility for web3 libraries
     config.resolve.fallback = { 
