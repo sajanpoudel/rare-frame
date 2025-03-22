@@ -41,6 +41,22 @@
   --glow-primary: 0 0 15px rgba(16, 185, 129, 0.6); /* emerald glow */
   --glow-secondary: 0 0 15px rgba(245, 158, 11, 0.6); /* amber glow */
   --glow-accent: 0 0 20px rgba(16, 185, 129, 0.7); /* emerald strong glow */
+  
+  /* Holographic effects */
+  --holographic-angle: 125deg;
+  --holographic-color-1: rgba(255, 255, 255, 0.6);
+  --holographic-color-2: rgba(245, 158, 11, 0.4);
+  --holographic-color-3: rgba(16, 185, 129, 0.5);
+  
+  /* 3D Depth Variables */
+  --depth-0: 0px;
+  --depth-10: 10px;
+  --depth-20: 20px;
+  --depth-30: 30px;
+  --depth-40: 40px;
+  --depth-50: 50px;
+  --depth-60: 60px;
+  --depth-70: 70px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -83,6 +99,11 @@
     --glow-primary: 0 0 20px rgba(52, 211, 153, 0.6); /* emerald-400 glow */
     --glow-secondary: 0 0 20px rgba(251, 191, 36, 0.6); /* amber-400 glow */
     --glow-accent: 0 0 25px rgba(52, 211, 153, 0.8); /* emerald-400 strong glow */
+    
+    /* Dark mode holographic effects */
+    --holographic-color-1: rgba(23, 23, 23, 0.6);
+    --holographic-color-2: rgba(217, 119, 6, 0.4);
+    --holographic-color-3: rgba(5, 150, 105, 0.5);
   }
   
   /* Dark mode specific overrides */
@@ -128,6 +149,14 @@ body {
   perspective: 1000px;
 }
 
+.perspective-1500 {
+  perspective: 1500px;
+}
+
+.perspective-2000 {
+  perspective: 2000px;
+}
+
 .preserve-3d {
   transform-style: preserve-3d;
 }
@@ -150,9 +179,21 @@ body {
   transform: translateY(-2px);
 }
 
+/* Enhanced 3D Hover with Dynamic Shadow */
+.hover-3d-premium {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hover-3d-premium:hover {
+  transform: translateY(-5px) translateZ(10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
 /* Glass Morphism Effect */
 .glass-morphism {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--border-light);
@@ -160,7 +201,144 @@ body {
 }
 
 .dark .glass-morphism {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(20, 20, 30, 0.3);
+  border-color: rgba(80, 80, 120, 0.2);
+}
+
+/* Advanced Glass Morphism with Colored Edges */
+.glass-morphism-premium {
+  position: relative;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: inherit;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.1),
+    0 1px 8px rgba(0, 0, 0, 0.07),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  isolation: isolate;
+}
+
+.glass-morphism-premium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(var(--holographic-angle), 
+    transparent 20%, 
+    var(--holographic-color-2) 40%, 
+    var(--holographic-color-3) 60%, 
+    transparent 80%);
+  z-index: -1;
+  opacity: 0.4;
+  border-radius: inherit;
+  transition: all 0.5s ease;
+  animation: move-gradient 8s linear infinite;
+}
+
+.glass-morphism-premium:hover::before {
+  background-position: 200% center;
+  opacity: 0.6;
+  animation-duration: 4s;
+}
+
+.dark .glass-morphism-premium {
+  background: rgba(15, 23, 42, 0.25);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.2),
+    0 1px 8px rgba(0, 0, 0, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Ultra Premium Glass Morphism - for extremely high-end cards */
+.glass-morphism-ultra {
+  position: relative;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: inherit;
+  overflow: hidden;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 2px 10px rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 0 30px rgba(255, 255, 255, 0.05);
+  isolation: isolate;
+}
+
+.glass-morphism-ultra::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(
+      var(--holographic-angle), 
+      transparent 0%, 
+      rgba(16, 185, 129, 0.2) 20%, 
+      rgba(245, 158, 11, 0.3) 40%,
+      rgba(255, 255, 255, 0.4) 60%,
+      rgba(16, 185, 129, 0.2) 80%,
+      transparent 100%
+    );
+  z-index: -1;
+  opacity: 0.5;
+  border-radius: inherit;
+  transition: all 0.5s ease;
+  animation: move-holo-gradient 15s linear infinite;
+}
+
+.glass-morphism-ultra::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 70%
+  );
+  z-index: -1;
+  opacity: 0.7;
+  border-radius: inherit;
+}
+
+.glass-morphism-ultra:hover::before {
+  opacity: 0.8;
+  animation-duration: 6s;
+}
+
+.dark .glass-morphism-ultra {
+  background: rgba(10, 15, 30, 0.3);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 2px 10px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    inset 0 0 30px rgba(16, 185, 129, 0.03);
+}
+
+/* Improved text for glass morphism */
+.glass-text {
+  position: relative;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.dark .glass-text {
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Animation for moving gradients */
+@keyframes move-gradient {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes move-holo-gradient {
+  0% { background-position: 0% center; filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(180deg); }
+  100% { background-position: 200% center; filter: hue-rotate(360deg); }
 }
 
 /* Animation Classes */
@@ -194,6 +372,29 @@ body {
   animation: float 15s ease-in-out infinite;
 }
 
+/* Enhanced floating with subtle rotation */
+@keyframes float-premium {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-15px) rotate(2deg) translateX(5px);
+  }
+  50% {
+    transform: translateY(-20px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(-2deg) translateX(-5px);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+.animate-float-premium {
+  animation: float-premium 20s ease-in-out infinite;
+}
+
 /* Orbiting animation for particles */
 @keyframes orbit {
   0% {
@@ -206,6 +407,23 @@ body {
 
 .animate-orbit {
   animation: orbit 15s linear infinite;
+}
+
+/* Enhanced orbiting with varying radius */
+@keyframes orbit-premium {
+  0% {
+    transform: rotate(0deg) translateX(100px) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) translateX(120px) rotate(-180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) translateX(100px) rotate(-360deg) scale(1);
+  }
+}
+
+.animate-orbit-premium {
+  animation: orbit-premium 25s ease-in-out infinite;
 }
 
 /* Pulse animation for glow effects */
@@ -222,6 +440,34 @@ body {
 
 .animate-pulse-glow {
   animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* Enhanced glow pulse with color shift */
+@keyframes pulse-glow-premium {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+    filter: hue-rotate(0deg);
+  }
+  33% {
+    opacity: 0.7;
+    transform: scale(1.15);
+    filter: hue-rotate(20deg);
+  }
+  66% {
+    opacity: 0.5;
+    transform: scale(1.05);
+    filter: hue-rotate(-20deg);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+    filter: hue-rotate(0deg);
+  }
+}
+
+.animate-pulse-glow-premium {
+  animation: pulse-glow-premium 7s ease-in-out infinite;
 }
 
 /* Theme Transition */
@@ -251,6 +497,63 @@ body {
   animation: rotate-gradient 8s ease infinite;
 }
 
+/* Holographic Card Background */
+.bg-holographic {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    25deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(16, 185, 129, 0.1),
+    rgba(245, 158, 11, 0.1),
+    rgba(255, 255, 255, 0.05)
+  );
+  background-size: 400% 400%;
+  animation: move-holographic 8s ease infinite;
+}
+
+@keyframes move-holographic {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.dark .bg-holographic {
+  background: linear-gradient(
+    25deg,
+    rgba(0, 0, 0, 0.2),
+    rgba(5, 150, 105, 0.15),
+    rgba(217, 119, 6, 0.15),
+    rgba(0, 0, 0, 0.2)
+  );
+  background-size: 400% 400%;
+  animation: move-holographic 8s ease infinite;
+}
+
+/* 3D Card with Depth Effects - For entire card sections */
+.depth-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* 3D Text with Emboss Effect */
+.text-3d {
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5),
+              0px 2px 0px rgba(255, 255, 255, 0.4),
+              0px 3px 0px rgba(255, 255, 255, 0.3),
+              0px 4px 0px rgba(255, 255, 255, 0.2),
+              0px 5px 0px rgba(255, 255, 255, 0.1),
+              0px 6px 5px rgba(0, 0, 0, 0.3);
+}
+
+.dark .text-3d {
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.8),
+              0px 2px 0px rgba(255, 255, 255, 0.6),
+              0px 3px 0px rgba(255, 255, 255, 0.4),
+              0px 4px 0px rgba(255, 255, 255, 0.3),
+              0px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
 /* Neon text effect */
 .neon-text {
   text-shadow: 0 0 5px rgba(66, 153, 225, 0.5), 0 0 20px rgba(66, 153, 225, 0.3);
@@ -258,6 +561,21 @@ body {
 
 .dark .neon-text {
   text-shadow: 0 0 5px rgba(99, 179, 237, 0.7), 0 0 20px rgba(99, 179, 237, 0.5);
+}
+
+/* Enhanced emerald neon text */
+.neon-text-emerald {
+  color: #10b981;
+  text-shadow: 0 0 5px rgba(16, 185, 129, 0.7),
+               0 0 10px rgba(16, 185, 129, 0.5),
+               0 0 15px rgba(16, 185, 129, 0.3);
+}
+
+.dark .neon-text-emerald {
+  color: #34d399;
+  text-shadow: 0 0 8px rgba(52, 211, 153, 0.8),
+               0 0 15px rgba(52, 211, 153, 0.6),
+               0 0 25px rgba(52, 211, 153, 0.4);
 }
 
 /* Button hover effects */
@@ -286,9 +604,45 @@ body {
   opacity: 1;
 }
 
+/* Glowing Button Effect */
+.btn-glow {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+    #10b981, #f59e0b, #10b981, #f59e0b);
+  background-size: 400% 400%;
+  z-index: -1;
+  animation: glowing 10s ease infinite;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.btn-glow:hover::before {
+  opacity: 1;
+}
+
+@keyframes glowing {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 /* Glow border styles */
 .glow-border {
   position: relative;
+  overflow: hidden;
 }
 
 .glow-border::before {
@@ -308,6 +662,41 @@ body {
 .glow-border:hover::before {
   opacity: 0.7;
   animation: rotate-gradient 3s linear infinite;
+}
+
+/* Enhanced holographic border */
+.holographic-border {
+  position: relative;
+  border-radius: inherit;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.holographic-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(var(--holographic-angle),
+    transparent 0%,
+    var(--holographic-color-2) 30%,
+    var(--holographic-color-3) 70%,
+    transparent 100%
+  );
+  background-size: 300% 300%;
+  animation: holographic-shift 3s linear infinite;
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.5;
+  transition: opacity 0.5s ease;
+}
+
+.holographic-border:hover::before {
+  opacity: 1;
+}
+
+@keyframes holographic-shift {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
 
 @keyframes rotate-gradient {
@@ -341,6 +730,21 @@ body {
   transition: opacity 300ms, transform 300ms;
 }
 
+/* 3D Element Transformation Classes */
+.translate-z-10 { transform: translateZ(10px); }
+.translate-z-20 { transform: translateZ(20px); }
+.translate-z-30 { transform: translateZ(30px); }
+.translate-z-40 { transform: translateZ(40px); }
+.translate-z-50 { transform: translateZ(50px); }
+
+/* Layered 3D Effect (for stacking elements in 3D space) */
+.layer-0 { transform: translateZ(var(--depth-0)); }
+.layer-1 { transform: translateZ(var(--depth-10)); }
+.layer-2 { transform: translateZ(var(--depth-20)); }
+.layer-3 { transform: translateZ(var(--depth-30)); }
+.layer-4 { transform: translateZ(var(--depth-40)); }
+.layer-5 { transform: translateZ(var(--depth-50)); }
+
 /* Particles container */
 .particles-container {
   position: absolute;
@@ -361,18 +765,36 @@ body {
 }
 
 .particle-1 {
-  background: var(--particle-color-1);
+  background: var(--particle-color-1, rgba(16, 185, 129, 0.6));
   filter: blur(4px);
 }
 
 .particle-2 {
-  background: var(--particle-color-2);
+  background: var(--particle-color-2, rgba(245, 158, 11, 0.6));
   filter: blur(3px);
 }
 
 .particle-3 {
-  background: var(--particle-color-3);
+  background: var(--particle-color-3, rgba(120, 113, 108, 0.6));
   filter: blur(5px);
+}
+
+/* Enhanced particle effects */
+.particle-premium {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle at 30% 30%, 
+    rgba(255, 255, 255, 0.8),
+    rgba(16, 185, 129, 0.3) 70%);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.dark .particle-premium {
+  background: radial-gradient(circle at 30% 30%, 
+    rgba(255, 255, 255, 0.5),
+    rgba(52, 211, 153, 0.3) 70%);
+  box-shadow: 0 0 12px rgba(52, 211, 153, 0.6);
 }
 
 /* 3D Glossy Effect */
@@ -403,6 +825,43 @@ body {
   left: 100%;
 }
 
+/* Enhanced Glossy 3D Effect with Rainbow Reflection */
+.glossy-3d-premium {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.glossy-3d-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    rgba(16, 185, 129, 0.1),
+    rgba(245, 158, 11, 0.1),
+    transparent
+  );
+  transform: skewX(30deg);
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.glossy-3d-premium:hover {
+  transform: translateY(-5px) rotateX(5deg) rotateY(5deg);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.glossy-3d-premium:hover::before {
+  left: 100%;
+}
+
 /* Glow orbs for 3D effects with new color scheme */
 .glow-orb-emerald {
   background: radial-gradient(circle at center, rgba(16, 185, 129, 0.7), rgba(16, 185, 129, 0.1) 70%);
@@ -422,6 +881,89 @@ body {
 .dark .glow-orb-amber {
   background: radial-gradient(circle at center, rgba(251, 191, 36, 0.7), rgba(251, 191, 36, 0.1) 70%);
   filter: blur(25px);
+}
+
+/* Enhanced Glow Orbs with Animation */
+.glow-orb-premium {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%,
+    rgba(255, 255, 255, 0.8),
+    rgba(16, 185, 129, 0.3) 50%,
+    transparent 80%);
+  filter: blur(15px);
+  animation: orb-pulse 4s ease-in-out infinite alternate;
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+  opacity: 0.6;
+  transform-style: preserve-3d;
+}
+
+@keyframes orb-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+    filter: blur(15px) hue-rotate(0deg);
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0.8;
+    filter: blur(20px) hue-rotate(45deg);
+  }
+}
+
+/* Card Glare Effect - Simulates light reflection */
+.card-glare {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.15),
+    transparent 80%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.hover-3d:hover .card-glare,
+.hover-3d-premium:hover .card-glare {
+  opacity: 1;
+}
+
+/* Crypto shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.crypto-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.crypto-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    135deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.1) 40%,
+    rgba(16, 185, 129, 0.1) 50%,
+    rgba(255, 255, 255, 0.1) 60%,
+    transparent 80%
+  );
+  background-size: 200% 200%;
+  transform: rotate(30deg);
+  animation: shimmer 10s linear infinite;
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Theme toggle button */
@@ -461,6 +1003,24 @@ body {
 .dark .theme-toggle-circle {
   transform: translateX(20px);
   color: #f1f5f9;
+}
+
+/* 3D Floating Button */
+.btn-float-3d {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.btn-float-3d:hover {
+  transform: translateY(-3px) translateZ(5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.btn-float-3d:active {
+  transform: translateY(0) translateZ(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* For WebKit browsers */

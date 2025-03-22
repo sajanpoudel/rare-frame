@@ -3,8 +3,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { base, baseSepolia, baseGoerli } from 'wagmi/chains';
-import { http, createConfig, WagmiProvider } from 'wagmi';
-import { RainbowKitProvider, getDefaultConfig, darkTheme, lightTheme } from '@rainbow-me/rainbowkit';
+import { http, createConfig, WagmiConfig } from 'wagmi';
+import { RainbowKitProvider, darkTheme, lightTheme } from '@rainbow-me/rainbowkit';
+import { getDefaultWallets, connectorsForWallets } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import ClientOnly from './components/ClientOnly';
@@ -23,16 +24,23 @@ const queryClient = new QueryClient({
   },
 });
 
-// Configure chains for Base networks
-const config = getDefaultConfig({
+// Configure wallet connection for RainbowKit v2
+const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || 'a4680c32df51906242872506cafd6e3c';
+const { wallets } = getDefaultWallets();
+const connectors = connectorsForWallets(wallets, {
+  projectId,
   appName: 'Rare Evo 2025 Tickets',
-  projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || 'a4680c32df51906242872506cafd6e3c',
+});
+
+// Configure chains for Base networks using Wagmi v2
+const config = createConfig({
   chains: [base, baseSepolia, baseGoerli],
   transports: {
     [base.id]: http(),
     [baseSepolia.id]: http(),
     [baseGoerli.id]: http(),
   },
+  connectors,
 });
 
 export default function ClientLayout({
@@ -206,7 +214,7 @@ export default function ClientLayout({
         <main className="relative z-10">
           <ClientOnly>
             <QueryClientProvider client={queryClient}>
-              <WagmiProvider config={config}>
+              <WagmiConfig config={config}>
                 <RainbowKitProvider 
                   theme={isDarkMode ? darkTheme({
                     accentColor: '#10b981', // emerald-500
@@ -224,7 +232,7 @@ export default function ClientLayout({
                     {children}
                   </div>
                 </RainbowKitProvider>
-              </WagmiProvider>
+              </WagmiConfig>
             </QueryClientProvider>
           </ClientOnly>
         </main>
@@ -246,6 +254,9 @@ export default function ClientLayout({
                 <span className="absolute -bottom-1 left-0 w-0 group-hover:w-full h-0.5 bg-gradient-to-r from-emerald-500 to-transparent transition-all duration-300"></span>
               </Link>
             </div>
+            <div className="mt-2 text-center text-xs italic text-gray-500 dark:text-gray-400">
+              Developed by Sajan and Niraj
+          </div>
           </div>
         </footer>
       </div>

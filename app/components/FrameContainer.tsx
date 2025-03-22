@@ -10,7 +10,7 @@ import {
   HiSparkles,
 } from 'react-icons/hi2';
 import Link from 'next/link';
-import { useAccount, useConnect } from 'wagmi';
+import { useAccount } from 'wagmi';
 import confetti from 'canvas-confetti';
 import { useRouter } from 'next/navigation';
 import { FaQrcode, FaCalendarAlt, FaMapMarkerAlt, FaClock, FaEthereum } from 'react-icons/fa';
@@ -50,17 +50,15 @@ export function FrameContainer() {
           const hasTicket = Math.random() > 0.5;
           
           if (hasTicket) {
-            const newTicketData = {
+            // Simulate ticket data from blockchain/database
+            setTicketData({
+              walletAddress: address,
               name: '',
               email: '',
               company: '',
-              walletAddress: address,
-              claimed: Math.random() > 0.5, // Randomly set claimed status
-            };
-            
-            setTicketData(newTicketData);
-            // Use the newTicketData directly instead of depending on state update
-            setFrameState(newTicketData.claimed ? 'view' : 'register');
+              claimed: false,
+            });
+            setFrameState('register');
           } else {
             setFrameState('mint');
           }
@@ -72,7 +70,7 @@ export function FrameContainer() {
         setFrameState('mint');
       }
     };
-
+    
     checkUserTicket();
   }, [address, isConnected]);
 
@@ -436,108 +434,124 @@ export function FrameContainer() {
         </AnimatePresence>
       </div>
       
-      <div className="p-3 sm:p-4 bg-gradient-to-r from-gray-50 to-amber-50 border-t border-amber-100 flex justify-between">
-        <button 
+      <div className="p-3 sm:p-4 bg-gradient-to-r from-gray-50 to-amber-50 dark:from-gray-800/40 dark:to-amber-900/30 border-t border-amber-100 dark:border-amber-800/30 flex justify-between glass-morphism-premium">
+        <motion.button 
           onClick={() => setFrameState('mint')}
-          className="text-xs sm:text-sm text-emerald-600 hover:text-emerald-800 font-medium flex items-center"
+          className="text-xs sm:text-sm text-emerald-600 hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300 font-medium flex items-center relative overflow-hidden group"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <svg className="h-4 w-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <span className="absolute inset-0 bg-emerald-100 dark:bg-emerald-900/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          <svg className="h-4 w-4 mr-1 relative z-10 group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
             <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
             <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
           </svg>
-          Mint Ticket
-        </button>
-        <button 
+          <span className="relative z-10">Mint Ticket</span>
+        </motion.button>
+        <motion.button 
           onClick={() => setFrameState('register')}
-          className="text-xs sm:text-sm text-emerald-600 hover:text-emerald-800 font-medium flex items-center"
+          className="text-xs sm:text-sm text-emerald-600 hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300 font-medium flex items-center relative overflow-hidden group"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <svg className="h-4 w-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <span className="absolute inset-0 bg-emerald-100 dark:bg-emerald-900/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          <svg className="h-4 w-4 mr-1 relative z-10 group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
             <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
             <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
           </svg>
-          Register
-        </button>
-        <button 
+          <span className="relative z-10">Register</span>
+        </motion.button>
+        <motion.button 
           onClick={handleViewTicket}
-          className="text-xs sm:text-sm text-emerald-600 hover:text-emerald-800 font-medium flex items-center"
+          className="text-xs sm:text-sm text-emerald-600 hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300 font-medium flex items-center relative overflow-hidden group"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <svg className="h-4 w-4 mr-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <span className="absolute inset-0 bg-emerald-100 dark:bg-emerald-900/40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          <svg className="h-4 w-4 mr-1 relative z-10 group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
           </svg>
-          View Ticket
-        </button>
+          <span className="relative z-10">View Ticket</span>
+        </motion.button>
       </div>
 
-      <div className="bg-gradient-to-r from-gray-50 to-amber-50 border-t border-amber-100 p-3 sm:p-4">
-        <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-center text-xs text-gray-500">
-          <div className="flex items-center">
+      <div className="bg-gradient-to-r from-gray-50 to-amber-50 dark:from-gray-800/40 dark:to-amber-900/30 border-t border-amber-100 dark:border-amber-800/30 p-3 sm:p-4 glass-morphism-premium">
+        <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-center text-xs text-gray-500 dark:text-gray-400">
+          <motion.div 
+            className="flex items-center"
+            whileHover={{ scale: 1.05, color: '#f59e0b' }}
+          >
             <svg className="h-4 w-4 mr-1 text-amber-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
-            Secure Minting
-          </div>
-          <div className="flex items-center">
+            <span className="relative">
+              Secure Minting
+              <motion.span 
+                className="absolute bottom-0 left-0 h-[1px] bg-amber-500" 
+                initial={{ width: 0 }}
+                whileHover={{ width: "100%" }}
+                transition={{ duration: 0.3 }}
+              />
+            </span>
+          </motion.div>
+          <motion.div 
+            className="flex items-center"
+            whileHover={{ scale: 1.05, color: '#f59e0b' }}
+          >
             <svg className="h-4 w-4 mr-1 text-amber-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 01-1.581.814l-4.419-4.419-4.419 4.419A1 1 0 014 16V4z" clipRule="evenodd" />
             </svg>
-            Base Network
-          </div>
-          <div className="flex items-center">
+            <span className="relative">
+              Base Network
+              <motion.span 
+                className="absolute bottom-0 left-0 h-[1px] bg-amber-500" 
+                initial={{ width: 0 }}
+                whileHover={{ width: "100%" }}
+                transition={{ duration: 0.3 }}
+              />
+            </span>
+          </motion.div>
+          <motion.div 
+            className="flex items-center"
+            whileHover={{ scale: 1.05, color: '#f59e0b' }}
+          >
             <svg className="h-4 w-4 mr-1 text-amber-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
               <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z" />
             </svg>
-            Help Center
-          </div>
+            <span className="relative">
+              Help Center
+              <motion.span 
+                className="absolute bottom-0 left-0 h-[1px] bg-amber-500" 
+                initial={{ width: 0 }}
+                whileHover={{ width: "100%" }}
+                transition={{ duration: 0.3 }}
+              />
+            </span>
+          </motion.div>
         </div>
         
-        <div className="mt-3 text-center text-xs text-gray-500 flex justify-center space-x-4">
+        <div className="mt-3 text-center text-xs text-gray-500 dark:text-gray-400 flex justify-center space-x-4">
           <a href="#" onClick={(e) => {
             e.preventDefault();
             window.location.href = '/privacy';
-          }} className="hover:text-emerald-500 transition-colors">Privacy</a>
-          <span>|</span>
+          }} className="hover:text-emerald-500 transition-colors relative group">
+            Privacy
+            <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-emerald-500 group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <span className="text-amber-500/50">|</span>
           <a href="#" onClick={(e) => {
             e.preventDefault();
             window.location.href = '/terms';
-          }} className="hover:text-emerald-500 transition-colors">Terms</a>
-          <span>|</span>
-          <a href="#" onClick={(e) => {
-            e.preventDefault();
-            window.location.href = '/support';
-          }} className="hover:text-emerald-500 transition-colors">Support</a>
+          }} className="hover:text-emerald-500 transition-colors relative group">
+            Terms
+            <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-emerald-500 group-hover:w-full transition-all duration-300"></span>
+          </a>
         </div>
       </div>
 
       {/* Footer with buttons for wallet connection and primary actions */}
       <div className="mt-auto p-5 border-t border-amber-100 dark:border-gray-700">
-        <div className="mb-3 text-center">
-          <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">Mint Price: </span>
-          <span className="inline-block bg-amber-50 dark:bg-gray-700 px-2 py-1 rounded text-amber-700 dark:text-amber-300 font-mono text-sm">0.0001 ETH</span>
-        </div>
-        
-        <div className="flex flex-col space-y-3">
-          <button
-            onClick={() => setFrameState('mint')} 
-            className="py-2.5 px-4 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-medium transition-colors shadow-sm flex items-center justify-center"
-          >
-            <svg className="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M4.5 3.75a3 3 0 00-3 3v.75h21v-.75a3 3 0 00-3-3h-15z" />
-              <path fillRule="evenodd" d="M22.5 9.75h-21v7.5a3 3 0 003 3h15a3 3 0 003-3v-7.5zm-18 3.75a.75.75 0 01.75-.75h6a.75.75 0 010 1.5h-6a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5h3a.75.75 0 000-1.5h-3z" clipRule="evenodd" />
-            </svg>
-            <span>Mint With Wallet</span>
-          </button>
-          
-          <button
-            onClick={handleDemoMint}
-            className="py-2.5 px-4 rounded-lg bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 font-medium transition-colors shadow-sm flex items-center justify-center"
-          >
-            <svg className="w-5 h-5 mr-2 text-amber-600 dark:text-amber-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 001.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 1.905 2.659 1.905h1.93l4.5 4.5c.945.945 2.561.276 2.561-1.06V4.06zM18.584 5.106a.75.75 0 011.06 0c3.808 3.807 3.808 9.98 0 13.788a.75.75 0 11-1.06-1.06 8.25 8.25 0 000-11.668.75.75 0 010-1.06z" />
-              <path d="M15.932 7.757a.75.75 0 011.061 0 6 6 0 010 8.486.75.75 0 01-1.06-1.061 4.5 4.5 0 000-6.364.75.75 0 010-1.06z" />
-            </svg>
-            <span>Get Demo Ticket</span>
-          </button>
-        </div>
+        {/* Removing these three elements as requested */}
       </div>
     </div>
   );

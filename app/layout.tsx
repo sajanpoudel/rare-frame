@@ -1,14 +1,12 @@
-import type { Metadata } from 'next';
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ClientLayout from './ClientLayout';
+import { metadata } from './layout.metadata';
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: 'Rare Evo 2025 - NFT Ticket Management',
-  description: 'NFT ticket management system for Rare Evo 2025 conference',
-};
+// Re-export the metadata from the separate file
+export { metadata };
 
 export default function RootLayout({
   children,
