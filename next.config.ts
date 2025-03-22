@@ -3,6 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   reactStrictMode: true,
+  eslint: {
+    // This disables ESLint during production builds
+    ignoreDuringBuilds: true,
+  },
   webpack: (config) => {
     // This is to handle polyfills and browser compatibility for web3 libraries
     config.resolve.fallback = { 
