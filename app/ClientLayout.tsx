@@ -72,7 +72,7 @@ export default function ClientLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </head>
-      <body className={`${inter.className} ${isDarkMode ? 'dark:bg-gray-900 dark:text-white' : 'bg-gradient-to-br from-blue-50 via-indigo-50 to-white'} min-h-screen transition-colors duration-200`} suppressHydrationWarning={true}>
+      <body className={`${inter.className} ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gradient-to-br from-blue-50 via-indigo-50 to-white'} min-h-screen transition-colors duration-200`} suppressHydrationWarning={true}>
         <div className="px-4 sm:px-6 lg:px-8 py-4 sm:py-6 max-w-[1200px] mx-auto">
           <header className="mb-6">
             <nav className="flex justify-between items-center py-3">
