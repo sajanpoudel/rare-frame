@@ -6,6 +6,23 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  
+  /* Card and UI colors */
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --card-shadow: rgba(0, 0, 0, 0.05);
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-tertiary: #6b7280;
+  --link: #2563eb;
+  --link-hover: #1d4ed8;
+  --button-bg: #3b82f6;
+  --button-text: #ffffff;
+  --ticket-gradient-from: #e0f2fe;
+  --ticket-gradient-to: #ede9fe;
+  --card-gradient-from: #dbeafe;
+  --card-gradient-mid: #e0e7ff;
+  --card-gradient-to: #f5f3ff;
 }
 
 @theme inline {
@@ -22,6 +39,53 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+    
+    /* Dark mode card and UI colors */
+    --card-bg: #1f2937;
+    --card-border: #374151;
+    --card-shadow: rgba(0, 0, 0, 0.3);
+    --text-primary: #f3f4f6;
+    --text-secondary: #d1d5db;
+    --text-tertiary: #9ca3af;
+    --link: #3b82f6;
+    --link-hover: #60a5fa;
+    --button-bg: #2563eb;
+    --button-text: #ffffff;
+    --ticket-gradient-from: #1e3a8a;
+    --ticket-gradient-to: #3730a3;
+    --card-gradient-from: #1e40af;
+    --card-gradient-mid: #3730a3;
+    --card-gradient-to: #4c1d95;
+  }
+  
+  /* Dark mode specific overrides */
+  .dark .bg-white {
+    background-color: var(--card-bg);
+  }
+  
+  .dark .border-gray-200 {
+    border-color: var(--card-border);
+  }
+  
+  .dark .text-gray-900 {
+    color: var(--text-primary);
+  }
+  
+  .dark .text-gray-700, 
+  .dark .text-gray-600, 
+  .dark .text-gray-800 {
+    color: var(--text-secondary);
+  }
+  
+  .dark .text-gray-500, 
+  .dark .text-gray-400 {
+    color: var(--text-tertiary);
+  }
+  
+  .dark .shadow-sm,
+  .dark .shadow-md,
+  .dark .shadow-lg {
+    box-shadow: 0 4px 6px var(--card-shadow);
   }
 }
 
@@ -68,9 +132,9 @@ body {
 
 /* Gradient Backgrounds */
 .bg-ticket-gradient {
-  background: linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%);
+  background: linear-gradient(135deg, var(--ticket-gradient-from) 0%, var(--ticket-gradient-to) 100%);
 }
 
 .bg-card-gradient {
-  background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 50%, #f5f3ff 100%);
+  background: linear-gradient(135deg, var(--card-gradient-from) 0%, var(--card-gradient-mid) 50%, var(--card-gradient-to) 100%);
 }
