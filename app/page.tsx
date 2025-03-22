@@ -27,9 +27,9 @@ export default function Home() {
   return (
     <>
       <div className="mb-16">
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-700 to-indigo-800 p-8 md:p-10 text-white shadow-xl">
-          <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-indigo-500/30 to-blue-400/20 rounded-full -mr-10 -mt-10 blur-xl"></div>
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-br from-indigo-700/30 to-blue-500/20 rounded-full -ml-16 -mb-16 blur-xl"></div>
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-amber-700 to-emerald-800 p-8 md:p-10 text-white shadow-xl">
+          <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-emerald-500/30 to-amber-400/20 rounded-full -mr-10 -mt-10 blur-xl"></div>
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-br from-amber-700/30 to-emerald-500/20 rounded-full -ml-16 -mb-16 blur-xl"></div>
           
           <div className="relative z-10 max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">RARE EVO 2025</h1>
@@ -39,11 +39,11 @@ export default function Home() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="#ticket-management" className="bg-white text-blue-700 hover:text-blue-800 hover:bg-blue-50 font-semibold py-3 px-6 rounded-lg shadow-md transition duration-200 flex items-center">
+              <a href="#ticket-management" className="bg-white text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50 dark:bg-emerald-900 dark:text-white dark:hover:bg-emerald-800 font-semibold py-3 px-6 rounded-lg shadow-md transition duration-200 flex items-center">
                 <FaTicketAlt className="mr-2" />
                 Get Started
               </a>
-              <Link href="/support" className="bg-blue-600 text-white hover:bg-blue-700 font-semibold py-3 px-6 rounded-lg shadow-md transition duration-200 flex items-center">
+              <Link href="/support" className="bg-amber-600 text-white hover:bg-amber-700 font-semibold py-3 px-6 rounded-lg shadow-md transition duration-200 flex items-center">
                 <FaQuestion className="mr-2" />
                 Learn More
               </Link>
@@ -53,39 +53,39 @@ export default function Home() {
       </div>
       
       <div className="my-16 px-4 sm:px-0">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-2">About RARE EVO 2025</h2>
-        <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+        <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-2">About RARE EVO 2025</h2>
+        <p className="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
           Experience the future of event ticketing with our NFT-powered ticketing system.
           Enjoy enhanced security, verified ownership, and a seamless experience from purchase to event entry.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
-          <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition duration-200">
-            <div className="text-blue-600 mb-4">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition duration-200">
+            <div className="text-amber-600 dark:text-amber-400 mb-4">
               <FaTicketAlt className="w-10 h-10" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">NFT Tickets</h3>
-            <p className="text-gray-600">
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">NFT Tickets</h3>
+            <p className="text-gray-600 dark:text-gray-300">
               Securely mint your ticket as an NFT on the Base network. Each ticket is a unique digital asset that provides verified access to RARE EVO 2025.
             </p>
           </div>
           
-          <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition duration-200">
-            <div className="text-blue-600 mb-4">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition duration-200">
+            <div className="text-amber-600 dark:text-amber-400 mb-4">
               <FaShieldAlt className="w-10 h-10" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Blockchain Security</h3>
-            <p className="text-gray-600">
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Blockchain Security</h3>
+            <p className="text-gray-600 dark:text-gray-300">
               Prevent counterfeiting and unauthorized transfers with blockchain verification. Your ticket ownership is securely recorded on the Base network.
             </p>
           </div>
           
-          <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition duration-200">
-            <div className="text-blue-600 mb-4">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition duration-200">
+            <div className="text-amber-600 dark:text-amber-400 mb-4">
               <FaUserCheck className="w-10 h-10" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Easy Registration</h3>
-            <p className="text-gray-600">
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Easy Registration</h3>
+            <p className="text-gray-600 dark:text-gray-300">
               Register your information securely to link your identity to your NFT ticket, ensuring a smooth check-in process at the event.
             </p>
           </div>
@@ -94,26 +94,26 @@ export default function Home() {
       
       <div id="ticket-management" className="max-w-6xl mx-auto">
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Ticket Management System</h2>
-          <div className="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-100">
+          <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-12">Ticket Management System</h2>
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden border border-gray-100 dark:border-gray-700">
             <FrameContainer />
           </div>
         </div>
       </div>
       
       <div className="my-16 px-4 sm:px-0">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Features & Benefits</h2>
+        <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-12">Features & Benefits</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-              <FaWallet className="text-blue-600 mr-2" />
+          <div className="bg-gradient-to-br from-amber-50 to-stone-100 dark:from-gray-800 dark:to-zinc-900 rounded-xl p-6 border border-stone-200 dark:border-gray-700">
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4 flex items-center">
+              <FaWallet className="text-amber-600 dark:text-amber-400 mr-2" />
               Demo Mode For First-time Users
             </h3>
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
               Try our system without any ETH! Our Demo Mode allows you to experience the full ticketing process with no blockchain transaction costs.
             </p>
-            <ul className="list-disc pl-5 text-gray-600 space-y-1">
+            <ul className="list-disc pl-5 text-gray-600 dark:text-gray-300 space-y-1">
               <li>Mint a demo ticket without ETH</li>
               <li>Experience the registration process</li>
               <li>View and test the QR code display</li>
@@ -121,15 +121,15 @@ export default function Home() {
             </ul>
           </div>
           
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-              <FaTicketAlt className="text-blue-600 mr-2" />
+          <div className="bg-gradient-to-br from-amber-50 to-stone-100 dark:from-gray-800 dark:to-zinc-900 rounded-xl p-6 border border-stone-200 dark:border-gray-700">
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4 flex items-center">
+              <FaTicketAlt className="text-amber-600 dark:text-amber-400 mr-2" />
               Enhanced Ticket Display
             </h3>
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
               Our ticket view features a large, prominent QR code for easy scanning at the event entrance, along with all your essential attendee information.
             </p>
-            <ul className="list-disc pl-5 text-gray-600 space-y-1">
+            <ul className="list-disc pl-5 text-gray-600 dark:text-gray-300 space-y-1">
               <li>Large, easy-to-scan QR code</li>
               <li>Clear status indicators (Claimed/Unclaimed)</li>
               <li>Important attendee details</li>
@@ -137,15 +137,15 @@ export default function Home() {
             </ul>
           </div>
           
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-              <FaChartLine className="text-blue-600 mr-2" />
+          <div className="bg-gradient-to-br from-amber-50 to-stone-100 dark:from-gray-800 dark:to-zinc-900 rounded-xl p-6 border border-stone-200 dark:border-gray-700">
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4 flex items-center">
+              <FaChartLine className="text-amber-600 dark:text-amber-400 mr-2" />
               Responsive Design
             </h3>
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
               Access your tickets from any device with our fully responsive design that looks great on desktops, tablets, and mobile phones.
             </p>
-            <ul className="list-disc pl-5 text-gray-600 space-y-1">
+            <ul className="list-disc pl-5 text-gray-600 dark:text-gray-300 space-y-1">
               <li>Optimized for all screen sizes</li>
               <li>Consistent experience across devices</li>
               <li>Smooth animations and transitions</li>
@@ -153,15 +153,15 @@ export default function Home() {
             </ul>
           </div>
           
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
-            <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center">
-              <FaShieldAlt className="text-blue-600 mr-2" />
+          <div className="bg-gradient-to-br from-amber-50 to-stone-100 dark:from-gray-800 dark:to-zinc-900 rounded-xl p-6 border border-stone-200 dark:border-gray-700">
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4 flex items-center">
+              <FaShieldAlt className="text-amber-600 dark:text-amber-400 mr-2" />
               Privacy & Security
             </h3>
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
               Your data security is our priority. We use blockchain technology to ensure ticket authenticity while protecting your personal information.
             </p>
-            <ul className="list-disc pl-5 text-gray-600 space-y-1">
+            <ul className="list-disc pl-5 text-gray-600 dark:text-gray-300 space-y-1">
               <li>Comprehensive privacy policy</li>
               <li>Secure registration process</li>
               <li>Verified ticket ownership</li>
@@ -171,16 +171,16 @@ export default function Home() {
         </div>
       </div>
       
-      <div className="my-16 bg-gradient-to-br from-blue-700 to-indigo-800 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto text-center shadow-xl">
+      <div className="my-16 bg-gradient-to-br from-amber-700 to-emerald-800 text-white rounded-2xl p-8 md:p-12 max-w-5xl mx-auto text-center shadow-xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready for RARE EVO 2025?</h2>
         <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
           Secure your spot at the premier web3 event of the year. Mint your NFT ticket today or try our demo mode to experience the system.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <a href="#ticket-management" className="bg-white text-blue-700 hover:text-blue-800 hover:bg-blue-50 font-semibold py-3 px-6 rounded-lg shadow-md transition duration-200">
+          <a href="#ticket-management" className="bg-white text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50 dark:bg-emerald-900 dark:text-white dark:hover:bg-emerald-800 font-semibold py-3 px-6 rounded-lg shadow-md transition duration-200">
             Mint Your Ticket
           </a>
-          <Link href="/support" className="bg-blue-600 border border-blue-500 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-200">
+          <Link href="/support" className="bg-amber-600 border border-amber-500 hover:bg-amber-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-200">
             Get Support
           </Link>
         </div>

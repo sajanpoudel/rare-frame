@@ -3,54 +3,86 @@
 @tailwind utilities;
 
 :root {
+  /* Base colors - new emerald/teal with amber accent palette */
   --background: #ffffff;
   --foreground: #171717;
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  --background-start-rgb: 236, 253, 245;
   --background-end-rgb: 255, 255, 255;
   
-  /* Card and UI colors */
+  /* Card and UI colors - improved contrast */
   --card-bg: #ffffff;
   --card-border: #e5e7eb;
-  --card-shadow: rgba(0, 0, 0, 0.05);
+  --card-shadow: rgba(0, 0, 0, 0.08);
   --text-primary: #111827;
-  --text-secondary: #4b5563;
-  --text-tertiary: #6b7280;
-  --link: #2563eb;
-  --link-hover: #1d4ed8;
-  --button-bg: #3b82f6;
+  --text-secondary: #374151; /* Darker than before for better contrast */
+  --text-tertiary: #4b5563; /* Darker than before for better contrast */
+  --link: #10b981; /* emerald-500 */
+  --link-hover: #047857; /* emerald-700 */
+  --button-bg: #10b981; /* emerald-500 */
   --button-text: #ffffff;
-  --ticket-gradient-from: #e0f2fe;
-  --ticket-gradient-to: #ede9fe;
-  --card-gradient-from: #dbeafe;
-  --card-gradient-mid: #e0e7ff;
-  --card-gradient-to: #f5f3ff;
+  
+  /* Gradients with vivid colors for Web3 look */
+  --gradient-primary: linear-gradient(135deg, #10b981, #14b8a6); /* emerald to teal */
+  --gradient-secondary: linear-gradient(135deg, #f59e0b, #ef4444); /* amber to red */
+  --gradient-accent: linear-gradient(135deg, #10b981, #f59e0b); /* emerald to amber */
+  --gradient-dark: linear-gradient(135deg, #064e3b, #0f766e); /* emerald-900 to teal-900 */
+  
+  /* Border and shadow effects */
+  --border-light: #d1fae5; /* emerald-100 */
+  --border-medium: #a7f3d0; /* emerald-200 */
+  --border-strong: #6ee7b7; /* emerald-300 */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.05), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 14px 28px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.10);
+  
+  /* Glow effects for neon buttons and accents */
+  --glow-primary: 0 0 15px rgba(16, 185, 129, 0.6); /* emerald glow */
+  --glow-secondary: 0 0 15px rgba(245, 158, 11, 0.6); /* amber glow */
+  --glow-accent: 0 0 20px rgba(16, 185, 129, 0.7); /* emerald strong glow */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Dark mode base colors */
+    --background: #111827; /* gray-900 */
+    --foreground: #f9fafb; /* gray-50 */
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 17, 24, 39;
+    --background-end-rgb: 17, 24, 39;
     
     /* Dark mode card and UI colors */
-    --card-bg: #1f2937;
-    --card-border: #374151;
-    --card-shadow: rgba(0, 0, 0, 0.3);
-    --text-primary: #f3f4f6;
-    --text-secondary: #d1d5db;
-    --text-tertiary: #9ca3af;
-    --link: #3b82f6;
-    --link-hover: #60a5fa;
-    --button-bg: #2563eb;
+    --card-bg: #1f2937; /* gray-800 */
+    --card-border: #374151; /* gray-700 */
+    --card-shadow: rgba(0, 0, 0, 0.25);
+    --text-primary: #f3f4f6; /* gray-100 */
+    --text-secondary: #e5e7eb; /* gray-200 */
+    --text-tertiary: #d1d5db; /* gray-300 */
+    --link: #34d399; /* emerald-400 lighter for dark mode */
+    --link-hover: #6ee7b7; /* emerald-300 */
+    --button-bg: #059669; /* emerald-600 */
     --button-text: #ffffff;
-    --ticket-gradient-from: #1e3a8a;
-    --ticket-gradient-to: #3730a3;
-    --card-gradient-from: #1e40af;
-    --card-gradient-mid: #3730a3;
-    --card-gradient-to: #4c1d95;
+    
+    /* Dark mode gradients */
+    --gradient-primary: linear-gradient(135deg, #065f46, #0f766e); /* emerald-800 to teal-800 */
+    --gradient-secondary: linear-gradient(135deg, #b45309, #b91c1c); /* amber-700 to red-700 */
+    --gradient-accent: linear-gradient(135deg, #059669, #d97706); /* emerald-600 to amber-600 */
+    --gradient-dark: linear-gradient(135deg, #064e3b, #134e4a); /* emerald-900 to teal-900 */
+    
+    /* Dark mode border and shadow effects */
+    --border-light: #064e3b; /* emerald-900 */
+    --border-medium: #065f46; /* emerald-800 */
+    --border-strong: #047857; /* emerald-700 */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.35), 0 4px 6px rgba(0, 0, 0, 0.2);
+    --shadow-hover: 0 14px 28px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.4);
+    
+    /* Dark mode glow effects */
+    --glow-primary: 0 0 20px rgba(52, 211, 153, 0.6); /* emerald-400 glow */
+    --glow-secondary: 0 0 20px rgba(251, 191, 36, 0.6); /* amber-400 glow */
+    --glow-accent: 0 0 25px rgba(52, 211, 153, 0.8); /* emerald-400 strong glow */
   }
   
   /* Dark mode specific overrides */
@@ -67,20 +99,19 @@
   }
   
   .dark .text-gray-700, 
-  .dark .text-gray-600, 
   .dark .text-gray-800 {
     color: var(--text-secondary);
   }
   
   .dark .text-gray-500, 
-  .dark .text-gray-400 {
+  .dark .text-gray-600 {
     color: var(--text-tertiary);
   }
   
   .dark .shadow-sm,
   .dark .shadow-md,
-  .dark .shadow-lg {
-    box-shadow: 0 4px 6px var(--card-shadow);
+  .dark .shadow {
+    box-shadow: var(--shadow-sm);
   }
 }
 
@@ -88,10 +119,11 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-  color: rgb(var(--foreground-rgb));
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* 3D Card Flip Effect */
+/* Advanced 3D Card Effects */
 .perspective-1000 {
   perspective: 1000px;
 }
@@ -106,6 +138,29 @@ body {
 
 .rotate-y-180 {
   transform: rotateY(180deg);
+}
+
+/* 3D Hover Effect */
+.hover-3d {
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.hover-3d:hover {
+  transform: translateY(-2px);
+}
+
+/* Glass Morphism Effect */
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+}
+
+.dark .glass-morphism {
+  background: rgba(0, 0, 0, 0.2);
 }
 
 /* Animation Classes */
@@ -125,11 +180,356 @@ body {
   animation: pulse-border 2s infinite;
 }
 
+/* Floating animation for 3D elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 15s ease-in-out infinite;
+}
+
+/* Orbiting animation for particles */
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(100px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(100px) rotate(-360deg);
+  }
+}
+
+.animate-orbit {
+  animation: orbit 15s linear infinite;
+}
+
+/* Pulse animation for glow effects */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* Theme Transition */
+.theme-transition {
+  transition: background-color 0.3s ease, 
+    color 0.3s ease, 
+    border-color 0.3s ease, 
+    box-shadow 0.3s ease;
+}
+
 /* Gradient Backgrounds */
 .bg-ticket-gradient {
-  background: linear-gradient(135deg, var(--ticket-gradient-from) 0%, var(--ticket-gradient-to) 100%);
+  background: linear-gradient(135deg, #10b981, #0d9488); /* emerald-500 to teal-600 */
 }
 
 .bg-card-gradient {
-  background: linear-gradient(135deg, var(--card-gradient-from) 0%, var(--card-gradient-mid) 50%, var(--card-gradient-to) 100%);
+  background: linear-gradient(135deg, #047857, #0f766e); /* emerald-700 to teal-700 */
+}
+
+.bg-web3-gradient {
+  background: linear-gradient(135deg, #059669, #f59e0b); /* emerald-600 to amber-500 */
+}
+
+.bg-neon-gradient {
+  background: linear-gradient(135deg, #10b981, #f59e0b, #ef4444); /* emerald-500, amber-500, red-500 */
+  background-size: 200% 200%;
+  animation: rotate-gradient 8s ease infinite;
+}
+
+/* Neon text effect */
+.neon-text {
+  text-shadow: 0 0 5px rgba(66, 153, 225, 0.5), 0 0 20px rgba(66, 153, 225, 0.3);
+}
+
+.dark .neon-text {
+  text-shadow: 0 0 5px rgba(99, 179, 237, 0.7), 0 0 20px rgba(99, 179, 237, 0.5);
+}
+
+/* Button hover effects */
+.btn-hover-effect {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-hover-effect:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  transform: scale(0);
+  opacity: 0;
+  border-radius: inherit;
+}
+
+.btn-hover-effect:hover:after {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Glow border styles */
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--neon-emerald, #10b981), var(--neon-amber, #f59e0b), var(--neon-stone, #78716c));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-border:hover::before {
+  opacity: 0.7;
+  animation: rotate-gradient 3s linear infinite;
+}
+
+@keyframes rotate-gradient {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Custom page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms, transform 400ms;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Particles container */
+.particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+/* Particles */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.particle-1 {
+  background: var(--particle-color-1);
+  filter: blur(4px);
+}
+
+.particle-2 {
+  background: var(--particle-color-2);
+  filter: blur(3px);
+}
+
+.particle-3 {
+  background: var(--particle-color-3);
+  filter: blur(5px);
+}
+
+/* 3D Glossy Effect */
+.glossy-3d {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glossy-3d::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: all 0.6s ease;
+}
+
+.glossy-3d:hover::before {
+  left: 100%;
+}
+
+/* Glow orbs for 3D effects with new color scheme */
+.glow-orb-emerald {
+  background: radial-gradient(circle at center, rgba(16, 185, 129, 0.7), rgba(16, 185, 129, 0.1) 70%);
+  filter: blur(20px);
+}
+
+.glow-orb-amber {
+  background: radial-gradient(circle at center, rgba(245, 158, 11, 0.7), rgba(245, 158, 11, 0.1) 70%);
+  filter: blur(20px);
+}
+
+.dark .glow-orb-emerald {
+  background: radial-gradient(circle at center, rgba(52, 211, 153, 0.7), rgba(52, 211, 153, 0.1) 70%);
+  filter: blur(25px);
+}
+
+.dark .glow-orb-amber {
+  background: radial-gradient(circle at center, rgba(251, 191, 36, 0.7), rgba(251, 191, 36, 0.1) 70%);
+  filter: blur(25px);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  background: #e5e7eb;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 0 3px;
+}
+
+.dark .theme-toggle {
+  background: #374151;
+}
+
+.theme-toggle-circle {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fbbf24;
+  font-size: 12px;
+}
+
+.dark .theme-toggle-circle {
+  transform: translateX(20px);
+  color: #f1f5f9;
+}
+
+/* For WebKit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(229, 231, 235, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 114, 128, 0.7);
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: rgba(31, 41, 55, 0.2);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(75, 85, 99, 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 114, 128, 0.7);
+}
+
+/* Additional custom styles for the new color scheme */
+.neon-text-teal {
+  color: #2dd4bf; /* teal-400 */
+  text-shadow: 0 0 5px rgba(45, 212, 191, 0.7), 0 0 10px rgba(45, 212, 191, 0.5);
+  transition: text-shadow 0.3s ease;
+}
+
+.dark .neon-text-teal {
+  color: #5eead4; /* teal-300 for better visibility in dark mode */
+  text-shadow: 0 0 8px rgba(94, 234, 212, 0.7), 0 0 15px rgba(94, 234, 212, 0.5), 0 0 25px rgba(94, 234, 212, 0.3);
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Rotate gradient animation */
+@keyframes rotate-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

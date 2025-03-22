@@ -11,16 +11,16 @@ module.exports = {
       colors: {
         // Custom colors that work well in both light and dark modes
         primary: {
-          50: '#e6f1fe',
-          100: '#cce3fd',
-          200: '#99c8fb',
-          300: '#66acf9',
-          400: '#3391f7',
-          500: '#0075f5',
-          600: '#005ec4',
-          700: '#004693',
-          800: '#002f62',
-          900: '#001731',
+          50: '#ecfdf5',
+          100: '#d1fae5',
+          200: '#a7f3d0',
+          300: '#6ee7b7',
+          400: '#34d399',
+          500: '#10b981',
+          600: '#059669',
+          700: '#047857',
+          800: '#065f46',
+          900: '#064e3b',
         },
       },
       backgroundColor: {
