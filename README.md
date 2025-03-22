@@ -1,6 +1,7 @@
 # RARE EVO 2025 NFT Ticket Management System
 
 Visit hrere: https://rare-frame.vercel.app/ 
+
 A modern, user-friendly NFT ticket management system built for the RARE EVO 2025 event, allowing attendees to mint, register, and manage their blockchain-based event tickets.
 
 ## 🎫 Overview
