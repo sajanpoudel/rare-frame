@@ -14,7 +14,9 @@ async function main() {
     
     // Get gas price
     const gasPrice = await hre.ethers.provider.getFeeData();
-    console.log(`Current gas price: ${hre.ethers.formatUnits(gasPrice.gasPrice, "gwei")} gwei`);
+    if (gasPrice.gasPrice !== null) {
+      console.log(`Current gas price: ${hre.ethers.formatUnits(gasPrice.gasPrice, "gwei")} gwei`);
+    }
     
     // Check wallet balance if private key is provided
     if (process.env.PRIVATE_KEY) {
@@ -23,7 +25,7 @@ async function main() {
       console.log(`Wallet address: ${wallet.address}`);
       console.log(`Wallet balance: ${hre.ethers.formatEther(balance)} ETH`);
       
-      if (balance.toString() === "0") {
+      if (balance === 0n) {
         console.warn("Warning: Your wallet has 0 ETH. You'll need ETH to deploy contracts.");
         console.log("Get testnet ETH from:");
         console.log("- Base Sepolia: https://www.coinbase.com/faucets/base-sepolia-faucet");
