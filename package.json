@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "compile": "hardhat compile",
+    "test:contracts": "hardhat test",
     "check-base": "hardhat run scripts/check-base.js",
     "deploy:sepolia": "hardhat run scripts/deploy.js --network base-sepolia",
     "deploy:goerli": "hardhat run scripts/deploy.js --network base-goerli",
