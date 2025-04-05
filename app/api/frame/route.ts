@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
         
         // In a real implementation, you would fetch ticket data from the blockchain
         // For demo purposes, we'll generate a QR code image URL
-        imageUrl = `https://rareevo.io/ticket-qr.jpg?wallet=${walletAddress}&fid=${fid}`;
+        imageUrl = `https://rareevo.io/ticket-qr.jpg?wallet=${encodeURIComponent(walletAddress)}&fid=${encodeURIComponent(String(fid))}`;
         
         frameHtml = `
           <!DOCTYPE html>
