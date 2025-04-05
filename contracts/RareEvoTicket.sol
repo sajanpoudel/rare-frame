@@ -6,6 +6,8 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
+/// @title Rare Evo 2025 ticket
+/// @notice Each ticket is an ERC721 token that its owner can later claim with registrant details.
 contract RareEvoTicket is ERC721URIStorage, Ownable {
     // Replace Counters with a simple uint256
     uint256 private _nextTokenId;
@@ -28,6 +30,8 @@ contract RareEvoTicket is ERC721URIStorage, Ownable {
     
     constructor() ERC721("Rare Evo 2025 Ticket", "REVO") Ownable(msg.sender) {}
     
+    /// @notice Buy a ticket. The payment must be at least TICKET_PRICE.
+    /// @return The id of the newly minted ticket.
     function mintTicket() public payable returns (uint256) {
         require(msg.value >= TICKET_PRICE, "Insufficient payment");
         require(_nextTokenId < MAX_TICKETS, "All tickets sold out");
@@ -51,6 +55,7 @@ contract RareEvoTicket is ERC721URIStorage, Ownable {
         return newTokenId;
     }
     
+    /// @notice Attach registrant details to a ticket you own. A ticket can only be claimed once.
     function claimTicket(
         uint256 tokenId,
         string memory name,
@@ -72,11 +77,13 @@ contract RareEvoTicket is ERC721URIStorage, Ownable {
         emit TicketClaimed(tokenId, name, block.timestamp);
     }
     
+    /// @notice Read the registrant details of an existing ticket.
     function getTicketDetails(uint256 tokenId) public view returns (TicketData memory) {
         require(_ownerOf(tokenId) != address(0), "Ticket does not exist");
         return ticketDetails[tokenId];
     }
     
+    /// @notice Send all ticket sales to the contract owner.
     function withdrawFunds() public onlyOwner {
         (bool success, ) = owner().call{value: address(this).balance}("");
         require(success, "Transfer failed");
