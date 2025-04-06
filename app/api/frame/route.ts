@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+// Where Farcaster posts button clicks. Set NEXT_PUBLIC_BASE_URL to your deployed site.
+const FRAME_POST_URL = `${process.env.NEXT_PUBLIC_BASE_URL ?? 'https://your-api-endpoint.com'}/api/frame`;
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -25,7 +28,7 @@ export async function POST(req: NextRequest) {
               <meta property="fc:frame:image" content="${imageUrl}" />
               <meta property="fc:frame:button:1" content="Connect Wallet" />
               <meta property="fc:frame:button:2" content="Back to Home" />
-              <meta property="fc:frame:post_url" content="https://your-api-endpoint.com/frame" />
+              <meta property="fc:frame:post_url" content="${FRAME_POST_URL}" />
             </head>
           </html>
         `;
@@ -42,7 +45,7 @@ export async function POST(req: NextRequest) {
               <meta property="fc:frame:input:text" content="Enter your wallet address" />
               <meta property="fc:frame:button:1" content="Register" />
               <meta property="fc:frame:button:2" content="Back to Home" />
-              <meta property="fc:frame:post_url" content="https://your-api-endpoint.com/frame" />
+              <meta property="fc:frame:post_url" content="${FRAME_POST_URL}" />
             </head>
           </html>
         `;
@@ -64,7 +67,7 @@ export async function POST(req: NextRequest) {
               <meta property="fc:frame:image" content="${imageUrl}" />
               <meta property="fc:frame:button:1" content="Flip Ticket" />
               <meta property="fc:frame:button:2" content="Back to Home" />
-              <meta property="fc:frame:post_url" content="https://your-api-endpoint.com/frame" />
+              <meta property="fc:frame:post_url" content="${FRAME_POST_URL}" />
             </head>
           </html>
         `;
@@ -81,7 +84,7 @@ export async function POST(req: NextRequest) {
               <meta property="fc:frame:button:1" content="Mint New Ticket" />
               <meta property="fc:frame:button:2" content="Register Ticket" />
               <meta property="fc:frame:button:3" content="View My Ticket" />
-              <meta property="fc:frame:post_url" content="https://your-api-endpoint.com/frame" />
+              <meta property="fc:frame:post_url" content="${FRAME_POST_URL}" />
               <meta property="fc:frame:aspect_ratio" content="1.91:1" />
             </head>
           </html>
