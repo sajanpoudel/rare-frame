@@ -6,16 +6,16 @@ const FRAME_POST_URL = `${process.env.NEXT_PUBLIC_BASE_URL ?? 'https://your-api-
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    
+
     // Extract the button index that was clicked
     const buttonIndex = body?.untrustedData?.buttonIndex;
     const inputText = body?.untrustedData?.inputText;
     const fid = body?.untrustedData?.fid;
-    
+
     // Default image for the frame
     let imageUrl = 'https://rareevo.io/og-image.jpg';
     let frameHtml = '';
-    
+
     // Handle different button actions
     switch (buttonIndex) {
       case 1: // Mint New Ticket
@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
           </html>
         `;
         break;
-        
+
       case 2: // Register Ticket
         imageUrl = 'https://rareevo.io/register-ticket.jpg';
         frameHtml = `
@@ -50,15 +50,15 @@ export async function POST(req: NextRequest) {
           </html>
         `;
         break;
-        
+
       case 3: // View Ticket
         // If input text is provided, use it as wallet address to look up ticket
         const walletAddress = inputText || '0x...';
-        
+
         // In a real implementation, you would fetch ticket data from the blockchain
         // For demo purposes, we'll generate a QR code image URL
         imageUrl = `https://rareevo.io/ticket-qr.jpg?wallet=${encodeURIComponent(walletAddress)}&fid=${encodeURIComponent(String(fid))}`;
-        
+
         frameHtml = `
           <!DOCTYPE html>
           <html>
@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
           </html>
         `;
         break;
-        
+
       default:
         // Default home frame
         frameHtml = `
@@ -90,16 +90,15 @@ export async function POST(req: NextRequest) {
           </html>
         `;
     }
-    
+
     return new NextResponse(frameHtml, {
       status: 200,
       headers: {
         'Content-Type': 'text/html',
       },
     });
-    
   } catch (error) {
     console.error('Frame API error:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
-} 
+}
