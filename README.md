@@ -173,3 +173,13 @@ If you encounter any issues or have questions about the NFT Ticket Management Sy
 
 © 2025 Rare Network LLC (dba RARE EVO). All rights reserved.
 # RARE_FRAME
+
+## Smart contract tests
+
+The contract lives in `contracts/RareEvoTicket.sol`. Run its tests with Hardhat:
+
+```
+npm run test:contracts
+```
+
+Copy `.env.example` to `.env` before deploying (`PRIVATE_KEY` is only needed for `deploy:*` and `verify`).
