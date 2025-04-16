@@ -1,9 +1,9 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { Inter } from 'next/font/google';
+import './globals.css';
 import ClientLayout from './ClientLayout';
 import { metadata } from './layout.metadata';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 // Re-export the metadata from the separate file
 export { metadata };
