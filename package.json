@@ -13,7 +13,8 @@
     "deploy:sepolia": "hardhat run scripts/deploy.js --network base-sepolia",
     "deploy:goerli": "hardhat run scripts/deploy.js --network base-goerli",
     "deploy:mainnet": "hardhat run scripts/deploy.js --network base",
-    "verify": "hardhat run scripts/verify.js"
+    "verify": "hardhat run scripts/verify.js",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@farcaster/core": "^0.15.6",
