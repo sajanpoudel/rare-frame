@@ -15,7 +15,8 @@
     "deploy:mainnet": "hardhat run scripts/deploy.js --network base",
     "verify": "hardhat run scripts/verify.js",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@farcaster/core": "^0.15.6",
