@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // Where Farcaster posts button clicks. Set NEXT_PUBLIC_BASE_URL to your deployed site.
 const FRAME_POST_URL = `${process.env.NEXT_PUBLIC_BASE_URL ?? 'https://your-api-endpoint.com'}/api/frame`;
 
+/** POST /api/frame */
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
