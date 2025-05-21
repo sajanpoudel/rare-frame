@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
+/** Page rendered at /privacy. */
 export default function PrivacyPolicyPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 sm:px-6 sm:py-12 bg-white dark:bg-gray-800 rounded-xl shadow-sm my-8">
