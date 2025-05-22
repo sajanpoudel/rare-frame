@@ -9,6 +9,7 @@ import {
   FaDiscord,
 } from 'react-icons/fa';
 
+/** Page rendered at /support. */
 export default function SupportPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 sm:px-6 sm:py-12 bg-white dark:bg-gray-800 rounded-xl shadow-sm my-8">
