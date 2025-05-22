@@ -8,6 +8,7 @@ import { GoVerified } from 'react-icons/go';
 import VerificationSuccess from '../components/VerificationSuccess';
 import { useSearchParams } from 'next/navigation';
 
+/** Page rendered at /scan-success. */
 export default function ScanSuccessPage({
   searchParams,
 }: {
