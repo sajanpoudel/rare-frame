@@ -89,4 +89,25 @@ describe('RareEvoTicket', function () {
       );
     });
   });
+
+  describe("metadata", function () {
+    it("has the expected name and symbol", async function () {
+      expect(await ticket.name()).to.equal("Rare Evo 2025 Ticket");
+      expect(await ticket.symbol()).to.equal("REVO");
+    });
+
+    it("exposes the price and supply limits", async function () {
+      expect(await ticket.TICKET_PRICE()).to.equal(price);
+      expect(await ticket.MAX_TICKETS()).to.equal(1000n);
+    });
+
+    it("supports the ERC721 interface", async function () {
+      expect(await ticket.supportsInterface("0x80ac58cd")).to.equal(true);
+    });
+
+    it("gives new tickets the default metadata uri", async function () {
+      await ticket.connect(buyer).mintTicket({ value: price });
+      expect(await ticket.tokenURI(0)).to.equal("ipfs://default-ticket-metadata");
+    });
+  });
 });
