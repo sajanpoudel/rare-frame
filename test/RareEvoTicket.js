@@ -140,4 +140,38 @@ describe('RareEvoTicket', function () {
       expect(await ethers.provider.getBalance(await ticket.getAddress())).to.equal(price * 2n);
     });
   });
+
+  describe("transfers", function () {
+    beforeEach(async function () {
+      await ticket.connect(buyer).mintTicket({ value: price });
+    });
+
+    it("lets the new owner claim a transferred ticket", async function () {
+      await ticket.connect(buyer).transferFrom(buyer.address, other.address, 0);
+      await expect(ticket.connect(other).claimTicket(0, "Eve", "eve@example.com", "Co")).to.emit(ticket, "TicketClaimed");
+    });
+
+    it("stops the previous owner from claiming after a transfer", async function () {
+      await ticket.connect(buyer).transferFrom(buyer.address, other.address, 0);
+      await expect(ticket.connect(buyer).claimTicket(0, "Ada", "ada@example.com", "Co")).to.be.revertedWith("Not ticket owner");
+    });
+
+    it("keeps the claimed status when the ticket is transferred", async function () {
+      await ticket.connect(buyer).claimTicket(0, "Ada", "ada@example.com", "Co");
+      await ticket.connect(buyer).transferFrom(buyer.address, other.address, 0);
+      const details = await ticket.getTicketDetails(0);
+      expect(details.claimed).to.equal(true);
+      expect(details.registrantName).to.equal("Ada");
+    });
+
+    it("records when the ticket was claimed", async function () {
+      await ticket.connect(buyer).claimTicket(0, "Ada", "ada@example.com", "Co");
+      const details = await ticket.getTicketDetails(0);
+      expect(details.claimTimestamp).to.be.greaterThan(0n);
+    });
+
+    it("cannot claim a ticket that does not exist", async function () {
+      await expect(ticket.connect(buyer).claimTicket(7, "Ada", "ada@example.com", "Co")).to.be.reverted;
+    });
+  });
 });
