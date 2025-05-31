@@ -404,7 +404,7 @@ export default function Home() {
                   >
                     <div className="absolute inset-0 bg-white/10 backdrop-blur-sm border border-white/20"></div>
                     <p className="relative text-white/95 py-6 px-10 text-lg">
-                      Welcome to the official ticket platform for RARE EVO 2025 — the premier web3
+                      Welcome to the official ticket platform for RARE EVO 2025, the premier web3
                       and NFT event taking place August 6-10, 2025 at Caesar's Palace in Las Vegas,
                       NV.
                     </p>
