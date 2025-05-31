@@ -127,4 +127,17 @@ describe('RareEvoTicket', function () {
       await expect(ticket.withdrawFunds()).to.not.be.reverted;
     });
   });
+
+  describe("payments", function () {
+    it("keeps an overpayment in the contract", async function () {
+      await ticket.connect(buyer).mintTicket({ value: price * 3n });
+      expect(await ethers.provider.getBalance(await ticket.getAddress())).to.equal(price * 3n);
+    });
+
+    it("accumulates the payments of several buyers", async function () {
+      await ticket.connect(buyer).mintTicket({ value: price });
+      await ticket.connect(other).mintTicket({ value: price });
+      expect(await ethers.provider.getBalance(await ticket.getAddress())).to.equal(price * 2n);
+    });
+  });
 });
