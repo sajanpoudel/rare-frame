@@ -110,4 +110,21 @@ describe('RareEvoTicket', function () {
       expect(await ticket.tokenURI(0)).to.equal("ipfs://default-ticket-metadata");
     });
   });
+
+  describe("ownership", function () {
+    it("makes the deployer the owner", async function () {
+      expect(await ticket.owner()).to.equal(owner.address);
+    });
+
+    it("lets a new owner withdraw after ownership is transferred", async function () {
+      await ticket.connect(buyer).mintTicket({ value: price });
+      await ticket.transferOwnership(other.address);
+      await expect(ticket.connect(other).withdrawFunds()).to.changeEtherBalances([ticket, other], [-price, price]);
+      await expect(ticket.withdrawFunds()).to.be.revertedWithCustomError(ticket, "OwnableUnauthorizedAccount");
+    });
+
+    it("withdrawing with an empty balance succeeds", async function () {
+      await expect(ticket.withdrawFunds()).to.not.be.reverted;
+    });
+  });
 });
